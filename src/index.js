@@ -8,7 +8,7 @@ const DEFAULT_SPRING_OPTIONS = {
     friction: 10,
 };
 
-class InterActiveDistortionBox {
+class InteractiveDistortionBox {
     element;
     filter;
     simpleSpring;
@@ -70,4 +70,4 @@ class InterActiveDistortionBox {
 
 }
 
-filterAreas.forEach((element) => new InterActiveDistortionBox(element));
+filterAreas.forEach((element) => new InteractiveDistortionBox(element));
