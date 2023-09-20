@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Distortion Flag Testing</title>
+</head>
+
+<style>
+    body {
+        display: block;
+    }
+
+    .flag {
+        width: fit-content;
+    }
+
+    .flag svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .filter-area {
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        contain: paint, layout, style, size, content;
+    }
+</style>
+
+<body>
+
+    <div class="filter-area">
+        <div class="filter">
+            <svg>
+                <defs>
+                    <filter id="distort" color-interpolation-filters="sRGB">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.0175, 0.0" numOctaves="2" result="TURB" />
+                        <feDisplacementMap in="SourceGraphic" in2="TURB" scale="0" xChannelSelector="R"
+                            yChannelSelector="G">
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+        <div class="flag">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+                <g filter="url(#distort)">
+                    <rect x="10.422" y="14.76" width="101.552" height="385.24" style="fill: black; stroke: none;" />
+                    <rect x="124.509" y="14.76" width="353.246" height="247.561" style="fill: black; stroke: none;" />
+                    <rect x="124.509" y="280.336" width="353.246" height="119.664" style="fill: black; stroke: none;" />
+                </g>
+            </svg>
+        </div>
+    </div>
+    <p>
+        Click the flag!
+    </p>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
